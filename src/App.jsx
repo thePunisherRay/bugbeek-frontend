@@ -1,5 +1,5 @@
 import React, { Component, createContext, useContext, useState, useMemo } from "react";
-import { importApis, generateTestCases, executeTests, groupTests } from "./api";
+import { importApis, generateTestCases, runExecute, groupTests } from "./api";
 import "./styles.css";
 
 const fmt = (d) =>
@@ -330,7 +330,7 @@ function WorkspaceProvider({ children }) {
       const chunk = list.slice(i, i + 10);
       let out;
       try {
-        out = (await executeTests({ baseUrl: base.trim(), tests: chunk })).results;
+        out = (await runExecute({ baseUrl: base.trim(), tests: chunk })).results;
       } catch (err) {
         setRunError(err.message);
         out = chunk.map((t) => ({
