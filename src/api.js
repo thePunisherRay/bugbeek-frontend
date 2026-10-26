@@ -1,7 +1,7 @@
 // All backend calls live here so each endpoint contract is fixed in one place.
 // BUGSHOT backend. Hard-coded on purpose: a stray VITE_API_BASE_URL (.env file or
 // Windows environment variable) was overriding the default and pointing at port 8000.
-const BASE = "http://127.0.0.1:9000";
+const BASE = "https://api.bugbeek.com";
 console.log("API base URL:", BASE);
 const JSON_HEADERS = { "Content-Type": "application/json" };
 
