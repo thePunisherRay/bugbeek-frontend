@@ -1,8 +1,6 @@
 // All backend calls live here so each endpoint contract is fixed in one place.
-// BUGSHOT backend. Hard-coded on purpose: a stray VITE_API_BASE_URL (.env file or
-// Windows environment variable) was overriding the default and pointing at port 8000.
-const BASE = "https://api.bugbeek.com";
-console.log("API base URL:", BASE);
+// BUGBEEK backend. Set VITE_BUGBEEK_API_URL on Vercel (must be https://). Falls back to the local server.
+const BASE = import.meta.env.VITE_BUGBEEK_API_URL || "http://127.0.0.1:9000";
 const JSON_HEADERS = { "Content-Type": "application/json" };
 
 async function request(path, body) {
